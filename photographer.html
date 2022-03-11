@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="css/contactForm.css">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="./assets/icons/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <title>Fisheye - photographe </title>
+</head>
+
+<body>
+  <div id="logoSection">
+    <a href="./index.html" role="Image link">
+      <img src="assets/icons/logo.png" class="logo" alt="Fisheye Home page" /></a>
+  </div>
+  <main id="main">
+    <!-- photographer page profile  -->
+    <header class="photographDetils" role="Header">
+    </header>
+    <!-- end photographer page profile -->
+    <!-- media filter  -->
+    <section class="filterMedia" aria-label="media's filter">
+      <div class="dropdown">
+        <label for="orderBy" class="filter__label">Trier par</label>
+        <button id="demo" class="filter" data-value='likes' onclick="dropbtn(this)">Popularity<span><img
+              class="iconMenu" src="./assets/icons/downArroew.png" alt=""></span>
+        </button>
+        <div id="myDropdown" class="filterDropdown" style="display:none;">
+          <a href="#about" id="popularite" class="filter__custom-option"
+            onclick="dropbtnVal(this);filterSort('likes')">Popularity</a>
+          <div class="line"></div>
+          <a href="#about" id="date" class="filter__custom-option"
+            onclick="dropbtnVal(this);filterSort('date')">Date</a>
+          <div class="line"></div>
+          <a href="#about" id="titleMedia" class="filter__custom-option"
+            onclick="dropbtnVal(this);filterSort('title')">Title</a>
+        </div>
+      </div>
+    </section>
+    <!-- end media filter -->
+    <!-- count total likes -->
+    <section class="total__count" aria-label="total likes">
+      <div class="total__likes"></div>
+      <div class="price"></div>
+    </section>
+    <!-- end count total likes -->
+    <!-- lightbox -->
+    <section class="mediaList" role="Dialog" aria-label="image closeup view">
+      <div class="ma-y">
+        <div class="row mediaListView">
+        </div>
+      </div>
+    </section>
+    <!-- end lightbox -->
+  </main>
+  <!-- hidden sections -->
+  <!-- contact form -->
+  <section id="modalForm" class="modalForm" role="region" aria-label="Contact form">
+    <div class="modal__content" aria-labelledby="contact" role="dialog">
+      <div class="form__header">
+        <h1 class="modal__head">
+        </h1>
+        <span class="modal__close" role="button" aria-label="Close Contact Form" onclick="toggleForm()">
+          <img class="close__img" src="./assets/icons/cross-white.svg" alt="">
+        </span>
+      </div>
+
+      <div class="modal__body">
+
+        <form name="contact" action="">
+          <div class="form__data" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom.">
+            <label for="firstname" class="form__label">Prénom</label>
+            <input class="form__text" type="text" id="firstname" name="firstname" minlength="2" required
+              aria-required="true" placeholder="" />
+            <span class="errorMessage"></span>
+          </div>
+
+          <div class="form__data" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom.">
+            <label for="lastname" class="form__label">Nom</label>
+            <input class="form__text" type="text" id="lastname" name="lastname" minlength="2" required
+              aria-required="true" placeholder="" />
+            <span class="errorMessage"></span>
+          </div>
+          <div class="form__data"
+            data-error="Veuillez saisir un email valide (Ex: john.doe@gmail.com, johndoe@gmail.com)">
+            <label for="email" class="form__label">E-mail</label>
+            <input class="form__text" type="email" id="email" name="email" required aria-required="true"
+              placeholder="" />
+            <span class="errorMessage"></span>
+          </div>
+          <div class="form__data" data-error="Veuillez saisir votre message.">
+            <label for="textArea" class="form__label">Votre message</label>
+            <textarea class="form__text-area" name="textArea" id="textArea" cols="30" rows="10" required
+              aria-required="true" placeholder=""></textarea>
+            <span class="errorMessage"></span>
+          </div>
+          <input class="form__submitButton" type="button" value="Send" onclick="submitForm()" />
+        </form>
+      </div>
+    </div>
+  </section>
+  <!-- end contact form -->
+  <section id="lightBox" class="modal__closeup" aria-label="image closeup view">
+    <div class="lightBox-content">
+      <div class="col-1">
+        <img src="./assets/icons/arrow.svg" class="prev" role="Link" aria-label="Previous Image"
+          onclick="plusSlides(-1)" alt="left-arrow">
+      </div>
+      <div class="mySlides col-2">
+        <div class="numbertext"></div>
+        <div id="showSlider"></div>
+      </div>
+      <div class="col-3">
+        <img src="./assets/icons/close_primaryColor.svg" class="close cursor" aria-label="Close dialog"
+          onclick="closeLightBox()" alt="close-icon">
+        <img src="./assets/icons/arrow.svg" class="next" role="Link" aria-label="Next Image" onclick="plusSlides(1)"
+          alt="right-arrow">
+      </div>
+    </div>
+    <div class="mediaTitle">
+
+    </div>
+  </section>
+  <script src="scripts/factories/Photographer.js"></script>
+  <script src="scripts/service/api.js"></script>
+  <script src="scripts/pages/photographer.js"></script>
+  <script src="scripts/pages/contactForm.js"></script>
+  <script src="scripts/pages/lightBox.js"></script>
+  <!-- <script src="/scripts/utils/contactForm.js"></script> -->
+</body>
+
+</html>
